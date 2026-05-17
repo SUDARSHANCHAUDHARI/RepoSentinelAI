@@ -19,7 +19,30 @@ FastAPI, React, GitHub API, Docker.
 
 ## Status
 
-Scaffolded. Implementation pending.
+Working CLI MVP.
+
+## Quick Start
+
+Scan the included sample repository:
+
+```bash
+python3 -m apps.api.app.cli --repo data/samples/repo --out-dir data/reports
+```
+
+Run tests:
+
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+## MVP Capabilities
+
+- Scans local repository files.
+- Detects committed secret-like values.
+- Flags unpinned Python dependencies.
+- Flags Dockerfile `latest` base images and missing non-root users.
+- Generates deterministic fix suggestions.
+- Writes JSON findings, JSON suggestions, and a Markdown PR-style review comment.
 
 ## Repository Status
 
@@ -35,4 +58,3 @@ This repository contains the production-ready foundation for the RepoSentinel AI
 - Pull request and issue templates
 - Production readiness checklist
 - Safe ignore rules for local secrets and generated files
-

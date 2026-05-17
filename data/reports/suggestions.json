@@ -1,0 +1,50 @@
+[
+  {
+    "finding": {
+      "evidence": {
+        "line": 1,
+        "path": "app.py",
+        "preview": "AWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\""
+      },
+      "kind": "secret.aws_access_key",
+      "severity": "critical",
+      "summary": "File contains credential-like material."
+    },
+    "suggestion": "Remove the secret from git history, rotate it, and load it from a secret manager or environment variable."
+  },
+  {
+    "finding": {
+      "evidence": {
+        "dependency": "fastapi",
+        "line": 1,
+        "path": "requirements.txt"
+      },
+      "kind": "dependency.unpinned_python",
+      "severity": "medium",
+      "summary": "Python dependency is not pinned."
+    },
+    "suggestion": "Pin the dependency to a reviewed version and enable dependency scanning."
+  },
+  {
+    "finding": {
+      "evidence": {
+        "path": "Dockerfile"
+      },
+      "kind": "docker.latest_base",
+      "severity": "medium",
+      "summary": "Dockerfile uses a latest base image tag."
+    },
+    "suggestion": "Use a pinned base image and run the container as a non-root user."
+  },
+  {
+    "finding": {
+      "evidence": {
+        "path": "Dockerfile"
+      },
+      "kind": "docker.root_user",
+      "severity": "medium",
+      "summary": "Dockerfile does not set a non-root USER."
+    },
+    "suggestion": "Use a pinned base image and run the container as a non-root user."
+  }
+]

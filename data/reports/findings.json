@@ -1,0 +1,38 @@
+[
+  {
+    "evidence": {
+      "line": 1,
+      "path": "app.py",
+      "preview": "AWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\""
+    },
+    "kind": "secret.aws_access_key",
+    "severity": "critical",
+    "summary": "File contains credential-like material."
+  },
+  {
+    "evidence": {
+      "dependency": "fastapi",
+      "line": 1,
+      "path": "requirements.txt"
+    },
+    "kind": "dependency.unpinned_python",
+    "severity": "medium",
+    "summary": "Python dependency is not pinned."
+  },
+  {
+    "evidence": {
+      "path": "Dockerfile"
+    },
+    "kind": "docker.latest_base",
+    "severity": "medium",
+    "summary": "Dockerfile uses a latest base image tag."
+  },
+  {
+    "evidence": {
+      "path": "Dockerfile"
+    },
+    "kind": "docker.root_user",
+    "severity": "medium",
+    "summary": "Dockerfile does not set a non-root USER."
+  }
+]
