@@ -1,0 +1,11 @@
+{
+  "name": "reposentinel-ai",
+  "private": true,
+  "version": "0.1.0",
+  "description": "RepoSentinel AI scaffold",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "seed": "bash scripts/seed-demo-data.sh",
+    "dev": "bash scripts/run-local.sh"
+  }
+}
