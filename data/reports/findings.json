@@ -3,7 +3,7 @@
     "evidence": {
       "line": 1,
       "path": "app.py",
-      "preview": "AWS_ACCESS_KEY_ID = \"AKIAIOSFODNN7EXAMPLE\""
+      "preview": "AWS_ACCESS_KEY_ID = \"[REDACTED]\""
     },
     "kind": "secret.aws_access_key",
     "severity": "critical",

@@ -13,6 +13,13 @@ PATTERNS = (
 )
 
 
+def _redact_preview(line: str) -> str:
+    redacted = line
+    for _, pattern in PATTERNS:
+        redacted = pattern.sub("[REDACTED]", redacted)
+    return redacted[:120]
+
+
 def detect_secrets(files: list[dict]) -> list[dict]:
     """Return secret findings."""
     findings: list[dict] = []
@@ -25,7 +32,7 @@ def detect_secrets(files: list[dict]) -> list[dict]:
                             "kind": kind,
                             "severity": "critical",
                             "summary": "File contains credential-like material.",
-                            "evidence": {"path": file["path"], "line": line_no, "preview": line[:120]},
+                            "evidence": {"path": file["path"], "line": line_no, "preview": _redact_preview(line)},
                         }
                     )
                     break

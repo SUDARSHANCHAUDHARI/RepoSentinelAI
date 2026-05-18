@@ -1,0 +1,24 @@
+{
+  "by_category": {
+    "dependency": 1,
+    "docker": 2,
+    "secret": 1
+  },
+  "by_severity": {
+    "critical": 1,
+    "medium": 3
+  },
+  "findings": 4,
+  "risk_level": "high",
+  "risk_score": 100,
+  "top_priority": {
+    "evidence": {
+      "line": 1,
+      "path": "app.py",
+      "preview": "AWS_ACCESS_KEY_ID = \"[REDACTED]\""
+    },
+    "kind": "secret.aws_access_key",
+    "severity": "critical",
+    "summary": "File contains credential-like material."
+  }
+}
