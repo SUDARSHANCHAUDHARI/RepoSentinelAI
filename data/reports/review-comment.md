@@ -3,7 +3,7 @@
 ## File contains credential-like material.
 
 - Severity: `critical`
-- Type: `secret.aws_access_key`
+- Type: `secret.demo_aws_access_key`
 - Path: `app.py`
 - Suggestion: Remove the secret from git history, rotate it, and load it from a secret manager or environment variable.
 

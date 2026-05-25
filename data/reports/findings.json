@@ -5,7 +5,7 @@
       "path": "app.py",
       "preview": "AWS_ACCESS_KEY_ID = \"[REDACTED]\""
     },
-    "kind": "secret.aws_access_key",
+    "kind": "secret.demo_aws_access_key",
     "severity": "critical",
     "summary": "File contains credential-like material."
   },
