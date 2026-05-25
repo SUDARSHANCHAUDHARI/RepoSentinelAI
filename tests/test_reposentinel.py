@@ -22,12 +22,12 @@ class RepoSentinelTests(unittest.TestCase):
         findings, suggestions = analyze_repo(SAMPLE)
         kinds = {finding["kind"] for finding in findings}
 
-        self.assertIn("secret.aws_access_key", kinds)
+        self.assertIn("secret.demo_aws_access_key", kinds)
         self.assertIn("dependency.unpinned_python", kinds)
         self.assertIn("docker.latest_base", kinds)
         self.assertIn("docker.root_user", kinds)
         self.assertEqual(len(suggestions), len(findings))
-        self.assertNotIn("AKIAIOSFODNN7EXAMPLE", str(findings))
+        self.assertNotIn("example-access-key-placeholder", str(findings))
 
     def test_cli_writes_review_comment(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

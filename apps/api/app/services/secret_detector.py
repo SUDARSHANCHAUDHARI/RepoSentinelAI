@@ -6,6 +6,7 @@ import re
 
 
 PATTERNS = (
+    ("secret.demo_aws_access_key", re.compile(r"DEMO_AWS_ACCESS_KEY_ID\s*=\s*['\"][^'\"]{8,}['\"]")),
     ("secret.aws_access_key", re.compile(r"AKIA[0-9A-Z]{16}")),
     ("secret.private_key", re.compile(r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----")),
     ("secret.bearer_token", re.compile(r"Bearer\s+[A-Za-z0-9._-]{16,}", re.IGNORECASE)),
