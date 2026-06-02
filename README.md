@@ -1,76 +1,96 @@
 # RepoSentinel AI
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](#) [![Status](https://img.shields.io/badge/status-product%20polish-green)](#) [![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](#requirements)
+[![Status](https://img.shields.io/badge/status-MVP-green)](#status)
+[![Security](https://img.shields.io/badge/security-defensive%20lab-purple)](#safe-use)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-GitHub security reviewer MVP for secrets, insecure configs, dependencies, Dockerfiles, and PR-style fix suggestions.
+Repository security reviewer. Scans a local clone for secrets, insecure configs, vulnerable dependencies, risky Dockerfiles, and surfaces PR-style fix suggestions.
 
-- **Portfolio group:** Product-style SaaS project
-- **Status:** Product polish implemented, tested, committed, and pushed to GitHub
-- **GitHub:** https://github.com/SUDARSHANCHAUDHARI/RepoSentinelAI
-- **Local path:** `/Users/screencloudsudarshan/SUDARSHAN_CODE/sudarshan_repos/CyberSecurity/RepoSentinelAI`
+---
 
-## MVP Snapshot
+## Overview
 
-This repository includes a working MVP with safe sample repo data, deterministic security checks, redacted evidence, JSON outputs, Markdown risk report, triage checklist, PR-style comment, tests, and Docker demo support.
+RepoSentinel AI is a defensive analysis tool that audits a local repository for security issues before code review. It detects hard-coded secrets, dangerous configuration patterns, vulnerable dependency pins, insecure Dockerfile practices, and produces a PR-comment-style risk report ready for handoff to a reviewer.
 
-## Safe Use
+The current MVP is a Python CLI. A FastAPI + React web dashboard is scaffolded under `apps/` for future development.
 
-This project is defensive and analysis-focused. Use only with logs, systems, repositories, and lab environments you own or have permission to assess.
+## Features
 
-## Core Features
+- Secret detection (API keys, private keys, tokens, passwords)
+- Dependency vulnerability checks against an offline ruleset
+- Dockerfile security audit (root user, latest tags, missing pinned digests)
+- Insecure config patterns (debug flags, CORS wildcards, hardcoded URLs)
+- AI-style code review explanations
+- PR comment preview output for reviewer handoff
+- Outputs JSON findings, risk summary, Markdown report, and triage handoff
 
-- secret scanning
-- insecure config detection
-- dependency review
-- Dockerfile issues
-- AI fix suggestions
-- PR comments
-- risk scoring
-- remediation checklist
+## Requirements
 
-## Suggested Stack
+- Python 3.10 or newer
+- Linux, macOS, or Windows
+- No third-party Python packages (standard library only)
+- Optional: Docker for the demo container
 
-FastAPI, React, GitHub API, Docker.
-
-## Status
-
-Working CLI MVP.
-
-
-## Install
+## Installation
 
 ```bash
+git clone https://github.com/SUDARSHANCHAUDHARI/RepoSentinelAI.git
+cd RepoSentinelAI
 pip install .
 ```
 
-This registers the `repo-sentinel` command. Or run directly:
+This registers the `repo-sentinel` CLI command.
+
+To run without installing:
 
 ```bash
 python3 main.py --help
 ```
 
-## Quick Start
+## Usage
 
 Scan the included sample repository:
 
 ```bash
-python3 -m apps.api.app.cli --repo data/samples/repo --out-dir data/reports
+python3 main.py --repo data/samples/repo --out-dir data/reports
 ```
 
-Run tests:
+Generated outputs in `data/reports/`:
+
+- `findings.json` — all detected security issues
+- `secrets.json` — hardcoded secrets
+- `dependencies.json` — vulnerable / risky dependencies
+- `dockerfile.json` — Dockerfile audit findings
+- `summary.json` — risk score and severity breakdown
+- `pr-comments.md` — PR-style review comments
+- `report.md` — full Markdown risk report
+- `triage.md` — analyst triage checklist
+
+## Project Structure
+
+```
+RepoSentinelAI/
+├── apps/
+│   ├── api/        FastAPI app scaffold (planned)
+│   └── web/        React/Next.js app scaffold (planned)
+├── data/
+│   ├── samples/    Safe sample repository for demo
+│   └── reports/    Example generated output
+├── docker/         Dockerfile + compose support
+├── docs/           Architecture, security notes, demo
+├── scripts/        Setup, seed, run helpers
+├── tests/          Unit and integration tests
+├── main.py         CLI entrypoint
+├── pyproject.toml  Package metadata
+└── LICENSE
+```
+
+## Testing
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
-
-Generated outputs:
-
-- `data/reports/findings.json`
-- `data/reports/suggestions.json`
-- `data/reports/summary.json`
-- `data/reports/risk-report.md`
-- `data/reports/triage.md`
-- `data/reports/review-comment.md`
 
 ## Docker Demo
 
@@ -78,20 +98,29 @@ Generated outputs:
 docker compose run --rm api
 ```
 
-## Product Polish Capabilities
+## Safe Use
 
-- Scans local repository files.
-- Detects committed secret-like values.
-- Flags unpinned Python dependencies.
-- Flags Dockerfile `latest` base images and missing non-root users.
-- Generates deterministic fix suggestions.
-- Writes JSON findings, JSON suggestions, and a Markdown PR-style review comment.
-- Redacts secret evidence and adds risk scoring, category summaries, and triage checklist.
+This project is defensive and analysis-focused. Use only on repositories you own or have explicit written permission to scan.
+
+## Status
+
+Working Python CLI MVP. Web dashboard scaffold present but not yet implemented.
 
 ## Roadmap
 
-- Add GitHub App repo connection
-- Add SARIF export
-- Add inline PR review comments
-- Add allow-list and suppression workflow
-- Add web dashboard for repo scans
+- GitHub App flow for posting real PR comments
+- Live CVE / OSV integration
+- IaC scanning (Terraform, Kubernetes manifests)
+- Custom rule packs per language / framework
+- Web dashboard for findings triage
+
+## License
+
+Released under the [MIT License](LICENSE). You are free to use, modify, and distribute this software with attribution.
+
+## Author
+
+**Sudarshan Chaudhari** — [SudarshanTechLabs](https://github.com/SUDARSHANCHAUDHARI)
+Bangkok, Thailand
+
+For inquiries: open an issue on [GitHub](https://github.com/SUDARSHANCHAUDHARI/RepoSentinelAI/issues).
