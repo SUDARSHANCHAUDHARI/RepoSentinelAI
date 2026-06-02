@@ -36,6 +36,19 @@ FastAPI, React, GitHub API, Docker.
 
 Working CLI MVP.
 
+
+## Install
+
+```bash
+pip install .
+```
+
+This registers the `repo-sentinel` command. Or run directly:
+
+```bash
+python3 main.py --help
+```
+
 ## Quick Start
 
 Scan the included sample repository:
